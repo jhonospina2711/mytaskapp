@@ -23,7 +23,7 @@ export class LabsComponent {
   img = 'https://w3schools.com/howto/img_avatar.png'
 
   person = signal({
-    name: 'Max',
+    name: 'Jhon Ospina',
     age: 16,
     avatar: 'https://w3schools.com/howto/img_avatar.png'
   });

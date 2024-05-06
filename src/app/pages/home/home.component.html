@@ -3,30 +3,22 @@
     <div class="container">
       <h1>My Day</h1>
       <p>All my tasks in one place</p>
-      <input
-        class="new-todo"
-        placeholder="Type new todo"
-        autofocus
-        type="text"
-        [formControl]="newTaskCtrl"
-        (keydown.enter)="changeHandler()"
-      />
+      <input class="new-todo" placeholder="Type new todo" autofocus type="text" [formControl]="newTaskCtrl"
+        (keydown.enter)="changeHandler()" />
     </div>
   </header>
   <div class="container todoapp-wrapper">
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <ul class="todo-list">
-        <li (dblclick) = "updateTaskEditingMode(i)"
-        *ngFor="let task of tasksByFilter(); index as i"
-        [class.editing]="task.editing"
-        [class.completed]="task.completed">
+        <li (dblclick)="updateTaskEditingMode(i)" *ngFor="let task of tasksByFilter(); index as i"
+          [class.editing]="task.editing" [class.completed]="task.completed">
           <div class="view">
-            <input class="toggle" type="checkbox" [checked]="task.completed" (change) = "updateTask(i)"/>
+            <input class="toggle" type="checkbox" [checked]="task.completed" (change)="updateTask(i)" />
             <label>{{ task.title }}</label>
-            <button class="destroy" (click) = "deleteTask(i)"></button>
+            <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
-          <input class="edit" (keydown.enter) = "updateTaskText(i, $event)"  [value]="task.title" />
+          <input class="edit" (keydown.enter)="updateTaskText(i, $event)" [value]="task.title" />
         </li>
         <!-- <li class="completed">
           <div class="view">
@@ -66,13 +58,13 @@
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
-          <a (click) = "changeFilter('all')" [class.select]="filter() === 'all'">All</a>
+          <a (click)="changeFilter('all')" [class.select]="filter() === 'all'">All</a>
         </li>
         <li>
-          <a (click) = "changeFilter('Pending')" [class.select]="filter() === 'Pending'">Pending</a>
+          <a (click)="changeFilter('Pending')" [class.select]="filter() === 'Pending'">Pending</a>
         </li>
         <li>
-          <a (click) = "changeFilter('Completed')" [class.select]="filter() === 'Completed'">Completed</a>
+          <a (click)="changeFilter('Completed')" [class.select]="filter() === 'Completed'">Completed</a>
         </li>
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
